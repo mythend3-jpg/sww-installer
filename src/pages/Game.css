@@ -1,0 +1,133 @@
+.game-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.game-banner {
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+}
+
+.game-body {
+  display: flex;
+  gap: 1.1rem;
+  padding: 1.1rem 1.3rem 1rem;
+  align-items: flex-start;
+}
+
+.game-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  margin-top: -52px;
+  border: 3px solid #1c1c1e;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  flex-shrink: 0;
+}
+
+.game-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.game-title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.game-version {
+  margin: 0.15rem 0 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.game-pill {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 150, 40, 0.18);
+  color: #ffb45c;
+  border: 1px solid rgba(255, 150, 40, 0.4);
+}
+
+.game-status {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.game-status.warn {
+  color: #ffb45c;
+}
+
+.game-status.bad {
+  color: #ff6b6b;
+}
+
+.game-notes {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: pre-line;
+}
+
+.game-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: stretch;
+  min-width: 170px;
+}
+
+.game-primary {
+  background: linear-gradient(135deg, #ff8a2a, #e8541c);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 1.2rem;
+  border-radius: 14px;
+}
+
+.game-primary:disabled {
+  opacity: 0.45;
+  filter: grayscale(0.4);
+}
+
+.game-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.6rem 1rem;
+  font-size: 0.92rem;
+}
+
+.game-footer {
+  padding: 0.6rem 1.3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.header-link {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  padding: 0;
+  cursor: pointer;
+}
+
+.advanced-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}

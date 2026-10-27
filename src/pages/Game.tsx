@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import "./Game.css";
 import { useTranslation } from "react-i18next";
+import { invoke } from "@tauri-apps/api/core";
 import { useStore } from "../StoreContext";
 import { Operation } from "../components/operations";
 import { DeviceInfo } from "../Device";
@@ -69,11 +70,10 @@ export const Game = ({
   const fetchInfo = useCallback(async () => {
     setInfoError(null);
     try {
-      const res = await fetch(GAME_INFO_URL + "?t=" + Date.now(), {
-        cache: "no-store",
+      const text = await invoke<string>("fetch_game_info", {
+        url: GAME_INFO_URL + "?t=" + Date.now(),
       });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = (await res.json()) as GameInfo;
+      const data = JSON.parse(text) as GameInfo;
       if (!data.version || !data.url) throw new Error("bad version.json");
       setInfo(data);
     } catch (e) {

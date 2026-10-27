@@ -296,3 +296,25 @@ pub async fn install_game_operation(
     op.complete("install")?;
     Ok(())
 }
+
+/// Fetch the game's version.json from our site. Done here instead of in the webview
+/// because the site sends no CORS headers and the webview fetch is blocked.
+#[tauri::command]
+pub async fn fetch_game_info(url: String) -> Result<String, AppError> {
+    let response = reqwest::Client::new()
+        .get(&url)
+        .header("Cache-Control", "no-cache")
+        .send()
+        .await
+        .map_err(|e| AppError::Download(e.to_string()))?;
+    if !response.status().is_success() {
+        return Err(AppError::Download(format!(
+            "version.json: HTTP {}",
+            response.status()
+        )));
+    }
+    response
+        .text()
+        .await
+        .map_err(|e| AppError::Download(e.to_string()))
+}
